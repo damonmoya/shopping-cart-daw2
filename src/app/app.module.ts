@@ -14,13 +14,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ProductPanelComponent } from './product-panel/product-panel.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ProductComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ProductPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCardModule,
     MatGridListModule,
     FlexLayoutModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

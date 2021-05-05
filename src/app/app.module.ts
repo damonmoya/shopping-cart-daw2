@@ -17,6 +17,17 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProductPanelComponent } from './product-panel/product-panel.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { ProductDialogComponent } from './product-dialog/product-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireDatabaseModule } from '@angular/fire/database'; 
+import { environment } from 'src/environments/environment';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -24,7 +35,8 @@ import { MatSortModule } from '@angular/material/sort';
     HomeComponent,
     ProductComponent,
     ShoppingCartComponent,
-    ProductPanelComponent
+    ProductPanelComponent,
+    ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +50,16 @@ import { MatSortModule } from '@angular/material/sort';
     FlexLayoutModule,
     MatSidenavModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule,
+    FormsModule,
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

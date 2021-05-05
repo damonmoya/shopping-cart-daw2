@@ -1,25 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Product } from './product/product';
 import { BehaviorSubject } from 'rxjs';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'; 
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
 
-  private products: Product[] = [
-    { name: 'Camiseta azul', description: "Una camiseta azul básica", category: "Parte superior", image: "assets/imgs/camiseta-azul.jpg"},
-    { name: 'Vaqueros azules', description: "Unos vaqueros azules clásicos", category: "Pantalones", image: "assets/imgs/vaqueros-azules.jpg"},
-    { name: 'Zapatos de piel', description: "Unos zapatos de piel elegantes", category: "Calzado", image: "assets/imgs/zapatos-piel.jpg"},
-    { name: 'Gorra negra', description: "Una gorra negra desenfadada", category: "Accesorios", image: "assets/imgs/gorra-negra.jpg"}
-  ];
-
-  private productSource = new BehaviorSubject(this.products)
-  currentProducts = this.productSource.asObservable();
-
-  getProducts() {
-    return this.currentProducts;
+  constructor(private store: AngularFirestore, private db: AngularFireDatabase) { 
   }
 
-  constructor() { }
+  //private products: Product[] = [
+  //  { name: 'Camiseta azul', description: "Una camiseta azul básica", category: "Parte superior", image: "assets/imgs/camiseta-azul.jpg"},
+  //  { name: 'Vaqueros azules', description: "Unos vaqueros azules clásicos", category: "Pantalones", image: "assets/imgs/vaqueros-azules.jpg"},
+  //  { name: 'Zapatos de piel', description: "Unos zapatos de piel elegantes", category: "Calzado", image: "assets/imgs/zapatos-piel.jpg"},
+  //  { name: 'Gorra negra', description: "Una gorra negra desenfadada", category: "Accesorios", image: "assets/imgs/gorra-negra.jpg"}
+  //];
+
+  products = this.store.collection('products').valueChanges({ idField: 'id' });
+
+  getDatabaseProducts() {
+    return this.products
+  }
+
+  addProductToDatabase(product: Product) {
+    this.store.collection('products').add(product);
+  }
+
+  removeProductFromDatabase(id: string){
+    this.store.collection('products').doc(id).delete();
+  }
+
+  updateProductInDatabase(product: Product) {
+    this.store.collection('products').doc(product.id).update(product);
+  }
+
 }

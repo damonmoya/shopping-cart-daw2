@@ -4,12 +4,14 @@
     <strong>¡No hay productos!</strong>
 </div>
 
-<table mat-table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" matSort class="mat-elevation-z8 center">
+<div class="create-btn center">
+  <button mat-flat-button color="primary" (click)="newProduct()" 
+  matTooltip="Crear nuevo producto" [matTooltipShowDelay]="500" [matTooltipHideDelay]="500" [matTooltipPosition]="'left'">
+    <mat-icon>add</mat-icon> Nuevo Producto
+  </button>
+</div>
 
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let product"> <strong>{{product.id}}</strong> </td>
-    </ng-container>
+<table mat-table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" matSort class="mat-elevation-z8 center">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
@@ -20,14 +22,19 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Categoría </th>
       <td mat-cell *matCellDef="let product"> <strong>{{product.category}}</strong> </td>
     </ng-container>
+
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </th>
+      <td mat-cell *matCellDef="let product"> <img class="imgs" [src]=product.image alt="imagen"> </td>
+    </ng-container>
   
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Acciones </th>
       <td mat-cell *matCellDef="let product"> 
-        <button mat-icon-button > <!--(click)="edit(product)"-->
+        <button mat-icon-button (click)="editProduct(product)">
           <mat-icon color="primary">create</mat-icon> 
         </button>
-        <button mat-icon-button> <!--(click)="delete(todo)"-->
+        <button mat-icon-button (click)="deleteProduct(product)">
           <mat-icon color="warn">delete</mat-icon> 
         </button>
       </td>

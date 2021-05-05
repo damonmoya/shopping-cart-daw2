@@ -2,3 +2,14 @@
   height: 150px;
   width: 150px;
 }
+
+.mat-card {
+  text-align: center;
+}
+
+h1 {
+  margin: 20px;
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bolder;
+}

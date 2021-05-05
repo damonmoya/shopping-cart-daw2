@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "shopping-cart-daw2": {
+      "hosting": {
+        "shopping-cart-daw2": [
+          "shopping-cart-daw2"
+        ]
+      }
+    }
+  }
+}

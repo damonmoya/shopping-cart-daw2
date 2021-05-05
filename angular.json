@@ -121,6 +121,10 @@
               "devServerTarget": "shopping-cart-daw2:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

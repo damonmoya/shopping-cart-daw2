@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from './product';
-import { ShopService } from '../shop.service';
+import { ShopService } from '../../services/shop/shop.service';
 import{ Observable, Subscription } from 'rxjs';
 
 @Component({

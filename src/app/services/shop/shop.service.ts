@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product/product';
+import { Product } from '../../components/product/product';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'; 
 import { AngularFirestore } from '@angular/fire/firestore';

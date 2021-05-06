@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '../product/product';
 import { Subscription } from 'rxjs';
-import { ShopService } from '../shop.service';
+import { ShopService } from '../../services/shop/shop.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDialogComponent, ProductDialogResult } from '../product-dialog/product-dialog.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
@@ -84,7 +84,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((result: ProductDialogResult) => {
       if (!result.cancel) {
         this.shopService.removeProductFromDatabase(product.id)
-        const msg = "Tarea '" + product.name + "' eliminada";
+        const msg = "Producto '" + product.name + "' eliminado";
         this.showAlert(msg);
       }  
     })
@@ -103,7 +103,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((result: ProductDialogResult) => {
       if (!result.cancel) {
         this.shopService.updateProductInDatabase(product)
-        const msg = "Tarea '" + result.product.name + "' editada";
+        const msg = "Producto '" + result.product.name + "' editado";
         this.showAlert(msg);
       }  
     })

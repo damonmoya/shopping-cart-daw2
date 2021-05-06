@@ -12,6 +12,7 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth
+      localStorage.setItem('authState', this.authState);
     });
   }
 
@@ -72,6 +73,7 @@ export class AuthService {
 
   signOut(): void {
     this.afAuth.signOut();
+    localStorage.removeItem('authState');
     this.router.navigate(['/'])
   }
 }

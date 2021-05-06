@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  isNewUser = true;
+  isNewUser = false;
   email = '';
   password = '';
   errorMessage = '';

@@ -1,72 +1,67 @@
-<mat-grid-list cols="1" rowHeight="6:1">
-    <mat-grid-tile>
+<div style="width: 350px;" *ngIf="isNewUser" class="center">
+    <h1>Registrarse</h1>
 
-        <div style="width: 350px;" *ngIf="isNewUser">
-            <h1>Registrarse</h1>
-
-            <p *ngIf="errorMessage.length > 0" class="text-danger">
-                {{errorMessage}}
-            </p>
+    <p *ngIf="errorMessage.length > 0" class="text-danger">
+        {{errorMessage}}
+    </p>
     
-            <p *ngIf="error.message.length > 0" class="text-danger">
-                {{error.message}}
-            </p>
+    <p *ngIf="error.message.length > 0" class="text-danger">
+        {{error.message}}
+    </p>
     
-            <form (ngSubmit)="onSignUp()">
-                <div class="form-group form-sections">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="email">
-                </div>
-    
-                <div class="form-group form-sections">
-                    <label for="password">Clave</label>
-                    <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
-                </div>
-    
-                <div align="center" class="form-sections">
-                    <button mat-raised-button color="primary" type="submit">Registrarse</button>
-                </div>
-            </form>
-    
-            <div align="center">
-                <a mat-button class="text-primary" (click)="changeForm()">¿Ya tienes cuenta? ¡Inicia sesión!</a>
-            </div>
+    <form (ngSubmit)="onSignUp()">
+        <div class="form-group form-sections">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required [(ngModel)]="email">
         </div>
-
-        <div style="width: 350px;" *ngIf="!isNewUser">
-            <h1>Iniciar sesión</h1>
-
-            <p *ngIf="errorMessage.length > 0" class="text-danger">
-                {{errorMessage}}
-            </p>
     
-            <p *ngIf="error.message.length > 0" class="text-danger">
-                {{error.message}}
-            </p>
-    
-            <form (ngSubmit)="onLoginEmail()">
-                <div class="form-group form-sections">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" required [(ngModel)]="email">
-                </div>
-    
-                <div class="form-group form-sections">
-                    <label for="password">Clave</label>
-                    <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
-                </div>
-    
-                <div align="center" class="form-sections">
-                    <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
-                </div>
-            </form>
-    
-            <div align="center">
-                <a mat-button class="text-primary" (click)="changeForm()">¿No tienes cuenta? ¡Regístrate!</a>
-            </div>
-    
-            <a *ngIf="!resetPassword && isValidMailFormat(email)" class="text-danger" (click)="sendResetEmail()">Reset Password for {{email}}</a>
-            <p *ngIf="resetPassword" class="text-success">Check your email to reset password!</p>
-    
+        <div class="form-group form-sections">
+            <label for="password">Clave</label>
+            <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
         </div>
-    </mat-grid-tile>
-</mat-grid-list>
+    
+        <div align="center" class="form-sections">
+            <button mat-raised-button color="primary" type="submit">Registrarse</button>
+        </div>
+    </form>
+    
+    <div align="center">
+        <a mat-button class="text-primary" (click)="changeForm()">¿Ya tienes cuenta? ¡Inicia sesión!</a>
+    </div>
+</div>
+
+<div style="width: 350px;" *ngIf="!isNewUser" class="center">
+    <h1>Iniciar sesión</h1>
+
+    <p *ngIf="errorMessage.length > 0" class="text-danger">
+        {{errorMessage}}
+    </p>
+    
+    <p *ngIf="error.message.length > 0" class="text-danger">
+        {{error.message}}
+    </p>
+    
+    <form (ngSubmit)="onLoginEmail()">
+        <div class="form-group form-sections">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" required [(ngModel)]="email">
+        </div>
+    
+        <div class="form-group form-sections">
+            <label for="password">Clave</label>
+            <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="password">
+        </div>
+    
+        <div align="center" class="form-sections">
+            <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
+        </div>
+    </form>
+    
+    <div align="center">
+        <a mat-button class="text-primary" (click)="changeForm()">¿No tienes cuenta? ¡Regístrate!</a>
+    </div>
+    
+    <a *ngIf="!resetPassword && isValidMailFormat(email)" class="text-danger" (click)="sendResetEmail()">Reset Password for {{email}}</a>
+    <p *ngIf="resetPassword" class="text-success">Check your email to reset password!</p>
+    
+</div>

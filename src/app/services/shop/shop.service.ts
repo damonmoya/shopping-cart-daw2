@@ -3,7 +3,7 @@ import { Product } from '../../components/product/product';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'; 
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -23,6 +23,10 @@ export class ShopService {
 
   products = this.store.collection('products').valueChanges({ idField: 'id' });
 
+  cart = this.store.collection('cart').valueChanges({ idField: 'id' });
+
+  ////////////////////////////
+
   getDatabaseProducts() {
     return this.products
   }
@@ -37,6 +41,20 @@ export class ShopService {
 
   updateProductInDatabase(product: Product) {
     this.store.collection('products').doc(product.id).update(product);
+  }
+
+  //////////////////////////////
+
+  getCartProducts() {
+    return this.products
+  }
+
+  addProductToCart(product: Product) {
+    this.store.collection('cart').add(product);
+  }
+
+  removeProductFromCart(id: string) {
+    this.store.collection('cart').doc(id).delete();
   }
 
 }

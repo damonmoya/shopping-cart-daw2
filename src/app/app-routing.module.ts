@@ -4,6 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductPanelComponent } from './components/product-panel/product-panel.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'products/panel', component: ProductPanelComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'user', component: UserComponent },
 
   { path: '**', component: HomeComponent } // Wildcard Route
 ];

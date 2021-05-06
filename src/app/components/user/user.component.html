@@ -1,0 +1,10 @@
+<div class="presentation">
+	<h1>Información del usuario</h1>
+	<h4>
+		<strong>UID:</strong> {{ authService.currentUserId }}
+	</h4>
+	<h4>
+		<strong>Email:</strong> {{ authService.currentUserName }}
+	</h4>
+    <button mat-raised-button color="warn" (click)="authService.signOut()">Cerrar sesión</button>
+</div>

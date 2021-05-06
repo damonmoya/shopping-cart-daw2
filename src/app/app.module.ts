@@ -24,10 +24,14 @@ import { MatInputModule } from '@angular/material/input';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire'
 import { AngularFireDatabaseModule } from '@angular/fire/database'; 
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthService } from "./services/auth/auth.service";
 import { environment } from 'src/environments/environment';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import { LoginComponent } from './components/login/login.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { MatDividerModule } from '@angular/material/divider';
     ProductComponent,
     ShoppingCartComponent,
     ProductPanelComponent,
-    ProductDialogComponent
+    ProductDialogComponent,
+    LoginComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -57,11 +63,12 @@ import { MatDividerModule } from '@angular/material/divider';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     MatTooltipModule,
     MatSnackBarModule,
     MatDividerModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

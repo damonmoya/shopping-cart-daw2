@@ -13,9 +13,13 @@
       <div fxFlex fxLayoutAlign="flex-end center">
         <button mat-flat-button class="login" routerLink="/login" *ngIf="!authService.isUserEmailLoggedIn" routerLinkActive="active">Iniciar sesión</button>
         <div *ngIf="authService.isUserEmailLoggedIn">
-          <button mat-button routerLink="/user" routerLinkActive="active">Mi usuario</button>
-          <button mat-button routerLink="/cart" routerLinkActive="active">Carrito</button>
-          <button mat-flat-button class="panel" routerLink="/products/panel" routerLinkActive="active">Panel de productos</button>
+          <button mat-mini-fab routerLink="/user" routerLinkActive="active" aria-label="Perfil de usuario">
+            <mat-icon>person</mat-icon>
+          </button>
+          <button mat-mini-fab routerLink="/cart" routerLinkActive="active" aria-label="Carrito de usuario" class="navbar-btn">
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+          <button mat-flat-button class="panel navbar-btn" routerLink="/products/panel" routerLinkActive="active">Panel de productos</button>
           <button mat-flat-button class="logout" (click)="authService.signOut()">Cerrar sesión</button>
         </div>
       </div>

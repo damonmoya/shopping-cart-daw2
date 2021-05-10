@@ -5,13 +5,17 @@ footer {
 }
 
 .login {
-    color: lime
+    color: white;
+    background-color: limegreen;
 }
 
 .logout {
-    color: red
+    color: white;
+    background-color: red;
+    
 }
 
 .panel {
-    color:yellow
+    background-color:yellow;
+    margin-right: 10px;
 }

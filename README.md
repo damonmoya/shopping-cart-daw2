@@ -1,27 +1,20 @@
 # ShoppingCartDaw2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+Segundo trabajo de Angular para la asignatura de Desarrollo de Aplicaciones Web II
 
-## Development server
+## Despliegue de la aplicación
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+https://shopping-cart-daw2.web.app
 
-## Code scaffolding
+## ¿De qué trata la aplicación?
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Se trata de una tienda de ropa online muy básica, en la que los usuarios registrados pueden añadir productos a su carrito de compra para adquirir los productos. En el perfil de estos usuarios se puede consultar el históricos de compras anteriores. La aplicación también cuenta con un panel administrativo en el que es posible crear, editar, ver y eliminar productos (CRUD). Los atributos de los productos son: nombre, precio, descripción e imagen (url).
 
-## Build
+## ¿Cómo se ha hecho la aplicación?
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Para su desarrollo, se han establecido diferentes rutas para los diversos componentes creados. Se ha utilizado Firebase para la Base de Datos, el sistema de autenticación de usuarios (con el que además se protegen algunas rutas para no ser accedidas por usuarios anónimos) y el despliegue de la propia aplicación. 
 
-## Running unit tests
+Se han establecido además los dos siguientes servicios:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Un servicio que permite gestionar el registro de usuarios y la sesión actual del login, y que permite obtener datos sobre las sesiones actuales.
+- Un servicio para la tienda, que gestiona la interacción con la base de datos y que sirve como medio de comunicación entre los componentes relacionados directamente con los productos de la tienda.

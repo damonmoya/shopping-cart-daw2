@@ -23,3 +23,21 @@
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+
+<div *ngIf="products.length !== 0" >
+
+  <hr>
+
+  <div class="row cart_info" align="center">
+    <div class="col">
+      Total de productos: {{ products.length }}
+    </div>
+    <div class="col">
+      Precio total: {{ total_price }}€
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="confirmBuy()"><mat-icon>attach_money</mat-icon>Finalizar comprar</button>
+    </div>
+  </div>
+
+</div>

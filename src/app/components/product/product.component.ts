@@ -28,6 +28,7 @@ export class ProductComponent implements OnInit {
     if (!this.authService.isUserEmailLoggedIn) {
       this.router.navigate(['/login']);
     } else {
+      product.user = this.authService.currentUserId
       this.shopService.addProductToCart(product)
       const msg = product.name + " se ha añadido al carrito"
       this.showAlert(msg)

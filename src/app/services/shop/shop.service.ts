@@ -5,13 +5,14 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
 
-  constructor(private store: AngularFirestore, private db: AngularFireDatabase) { 
+  constructor(private store: AngularFirestore, private authService: AuthService) { 
   }
 
   //private products: Product[] = [
@@ -23,7 +24,7 @@ export class ShopService {
 
   products = this.store.collection('products').valueChanges({ idField: 'id' });
 
-  cart = this.store.collection('cart').valueChanges({ idField: 'id' });
+  purchases = this.store.collection('purchases').valueChanges();
 
   ////////////////////////////
 
@@ -46,15 +47,39 @@ export class ShopService {
   //////////////////////////////
 
   getCartProducts() {
-    return this.products
+    const userCart = "cart_" + this.authService.currentUserId
+    return this.store.collection(userCart).valueChanges({ idField: 'id' });
   }
 
   addProductToCart(product: Product) {
-    this.store.collection('cart').add(product);
+    const userCart = "cart_" + this.authService.currentUserId
+    this.store.collection(userCart).add(product);
   }
 
   removeProductFromCart(id: string) {
-    this.store.collection('cart').doc(id).delete();
+    const userCart = "cart_" + this.authService.currentUserId
+    this.store.collection(userCart).doc(id).delete();
+  }
+
+  /////////////////////////////
+
+  confirmBuy(amount: number) {
+    const userCart = "cart_" + this.authService.currentUserId
+    const userProducts = this.store.collection(userCart).valueChanges({ idField: 'id' });
+
+    let list = []
+    let i = 1
+    userProducts.subscribe((value) => value.forEach((element) => {
+      list.push(element)
+      if (value.length == i) {
+        this.store.collection('purchases').add({ user: this.authService.currentUserId, amount: amount, products: list, date: new Date()});
+        list.forEach(element => {
+          this.removeProductFromCart(element.id)
+        });
+      }
+      i = i + 1
+    }
+    ));
   }
 
 }

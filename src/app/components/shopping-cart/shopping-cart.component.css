@@ -14,7 +14,7 @@ h1 {
   font-weight: bolder;
 }
 
-.no-products {
+.no-products, .cart_info {
   margin-top: 10px;
   font-size: 18pt;
 }
@@ -24,3 +24,4 @@ h1, .no-products {
   text-align: center;
   margin-bottom: 10px;
 }
+

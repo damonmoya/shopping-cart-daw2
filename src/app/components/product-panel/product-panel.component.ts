@@ -57,7 +57,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
       disableClose: true,
       width: '270px',
       data: {
-        product: { name: '', price: '', description: '', image: '',},
+        product: { user: '', name: '', price: '', description: '', image: '',},
         creating: true
       }
     });

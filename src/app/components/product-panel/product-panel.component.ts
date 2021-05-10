@@ -29,7 +29,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
     })
    }
   
-  displayedColumns: string[] = ['name', 'price', 'image', 'actions'];
+  displayedColumns: string[] = ['name', 'description', 'price', 'image', 'actions'];
 
   @ViewChild(MatTable)
   table: MatTable<any>;

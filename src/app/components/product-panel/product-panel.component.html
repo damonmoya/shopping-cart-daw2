@@ -18,6 +18,11 @@
       <td mat-cell *matCellDef="let product"> <strong>{{product.name}}</strong> </td>
     </ng-container>
 
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
+      <td mat-cell *matCellDef="let product"> <strong>{{product.description}}</strong> </td>
+    </ng-container>
+
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
       <td mat-cell *matCellDef="let product"> <strong>{{product.price}}€</strong> </td>

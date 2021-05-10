@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../components/product/product';
-import { BehaviorSubject } from 'rxjs';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'; 
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({

@@ -3,7 +3,7 @@ import{ Subscription } from 'rxjs';
 import { ShopService } from '../../services/shop/shop.service';
 import { Product } from '../product/product';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,7 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(private shopService: ShopService, private authService: AuthService, private _snackBar: MatSnackBar) { 
+  constructor(private shopService: ShopService, private router: Router, private _snackBar: MatSnackBar) { 
     this.subscription = this.shopService.getCartProducts().subscribe(products => {
       this.products = products
 
@@ -39,8 +39,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   confirmBuy() {
-
     this.shopService.confirmBuy(this.total_price)
+    const msg = "¡Compra confirmada!"
+    this.router.navigate(['/user'])
+    this.showAlert(msg)
   }
 
   showAlert(msg: string): void {

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
   errorMessage = '';
+  recoverEmail = '';
   error: { name: string, message: string } = { name: '', message: '' };
 
   resetPassword = false;
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
   onSignUp(): void {
     this.clearErrorMessage()
 
-    if (this.validateForm(this.email, this.password)) {
+    if (this.validateForm(this.email, this.password) && this.validatePasswordLength(this.password)) {
       this.authService.signUpWithEmail(this.email, this.password)
         .then(() => {
           this.router.navigate(['/'])
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
         .catch(_error => {
           this.error = _error
           this.error.message = "Las credenciales introducidas no corresponden a ningún usuario"
+          this.recoverEmail = this.email
         })
     }
   }
@@ -75,7 +77,13 @@ export class LoginComponent implements OnInit {
       return false
     }
 
-    if (password.length < 6) {
+    this.errorMessage = ''
+
+    return true
+  }
+
+  validatePasswordLength(password: string): boolean {
+      if (password.length < 6) {
       this.errorMessage = 'La clave debe tener al menos 6 caracteres'
       return false
     }
@@ -98,7 +106,7 @@ export class LoginComponent implements OnInit {
   sendResetEmail() {
     this.clearErrorMessage()
 
-    this.authService.resetPassword(this.email)
+    this.authService.resetPassword(this.recoverEmail)
       .then(() => this.resetPassword = true)
       .catch(_error => {
         this.error = _error

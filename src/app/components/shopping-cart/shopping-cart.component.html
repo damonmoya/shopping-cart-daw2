@@ -18,7 +18,7 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button  color="warn" (click)="removeFromCart(product)"><mat-icon>remove_shopping_cart</mat-icon>Eliminar del carrito</button>
+        <button mat-raised-button  color="warn" (click)="removeFromCart(product)"><mat-icon>remove_shopping_cart</mat-icon>Quitar del carrito</button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
@@ -28,16 +28,14 @@
 
   <hr>
 
-  <div class="row cart_info" align="center">
-    <div class="col">
-      Total de productos: {{ products.length }}
-    </div>
-    <div class="col">
-      Precio total: {{ total_price }}€
-    </div>
-    <div class="col">
+  <div class="cart_info" align="center">
+      <p>
+        Total de productos: {{ products.length }}
+      </p>
+      <p>
+        Precio total: {{ total_price }}€
+      </p>
       <button mat-raised-button color="primary" (click)="confirmBuy()"><mat-icon>attach_money</mat-icon>Finalizar comprar</button>
-    </div>
   </div>
 
 </div>

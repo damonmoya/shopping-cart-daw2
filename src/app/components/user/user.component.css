@@ -1,3 +1,25 @@
 .presentation {
     margin: 20px;
 }
+
+table {
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+th, td {
+  overflow: hidden;
+  width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.no-products {
+  margin-top: 10px;
+  font-size: 18pt;
+}
+
+h1, table, .no-products {
+  font-weight: bold;
+  margin-bottom: 10px;
+}

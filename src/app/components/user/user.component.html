@@ -7,4 +7,49 @@
 		<strong>Email:</strong> {{ authService.currentUserName }}
 	</h4>
     <button mat-raised-button color="warn" (click)="authService.signOut()">Cerrar sesión</button>
+
+	<div>
+		<hr>
+
+		<h1>Historial de compras</h1>
+
+		<div *ngIf="dataSource.data.length == 0" class="no-products">
+			<strong>¡No se ha hecho ninguna compra!</strong>
+		</div>
+
+		<table mat-table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+			<ng-container matColumnDef="id">
+			  <th mat-header-cell *matHeaderCellDef mat-sort-header> ID compra</th>
+			  <td mat-cell *matCellDef="let purchase"> <strong>{{purchase.id}}</strong> </td>
+			</ng-container>
+		
+			<ng-container matColumnDef="amount">
+			  <th mat-header-cell *matHeaderCellDef mat-sort-header> Importe total </th>
+			  <td mat-cell *matCellDef="let purchase"> <strong>{{purchase.amount}}€</strong> </td>
+			</ng-container>
+		
+			<ng-container matColumnDef="products">
+			  <th mat-header-cell *matHeaderCellDef> Productos comprados </th>
+			  <td mat-cell *matCellDef="let purchase"> 
+				  <ul>
+					  <li *ngFor="let product of purchase.products">
+						{{product.name}} ({{ product.price }}€)
+					  </li>
+				  </ul>
+			  </td>
+			</ng-container>
+		  
+			<ng-container matColumnDef="date">
+			  <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de compra </th>
+			  <td mat-cell *matCellDef="let purchase"> <strong>{{purchase.date.toMillis() | date:'dd/MM/yyyy h:mm a'}}</strong> </td>
+			</ng-container>
+		
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+			
+		</table>
+
+	</div>
+
 </div>

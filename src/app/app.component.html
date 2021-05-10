@@ -13,6 +13,7 @@
       <div fxFlex fxLayoutAlign="flex-end center">
         <button mat-button class="login" routerLink="/login" *ngIf="!authService.isUserEmailLoggedIn" routerLinkActive="active">Iniciar sesión</button>
         <div *ngIf="authService.isUserEmailLoggedIn">
+          <button mat-button routerLink="/user" routerLinkActive="active">Mi usuario</button>
           <button mat-button routerLink="/cart" routerLinkActive="active">Carrito</button>
           <button mat-button class="panel" routerLink="/products/panel" routerLinkActive="active">Panel de productos</button>
           <button mat-button class="logout" (click)="authService.signOut()">Cerrar sesión</button>

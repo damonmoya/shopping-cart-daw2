@@ -72,7 +72,7 @@ export class ShopService {
     userProducts.subscribe((value) => value.forEach((element) => {
       list.push(element)
       if (value.length == i) {
-        this.store.collection('purchases').add({ user: this.authService.currentUserId, amount: amount, products: list, date: new Date()});
+        this.store.collection('purchases').add({ id: this.store.createId(), user: this.authService.currentUserId, amount: amount, products: list, date: new Date()});
         list.forEach(element => {
           this.removeProductFromCart(element.id)
         });
@@ -80,6 +80,12 @@ export class ShopService {
       i = i + 1
     }
     ));
+  }
+
+  /////////////////////////////
+
+  getUserPurchases() {
+    return this.store.collection('purchases', ref => ref.where('user', '==', this.authService.currentUserId)).valueChanges();
   }
 
 }

@@ -6,3 +6,12 @@ h1 {
 p {
   margin-left: 20px;
 }
+
+.imgs {
+  height: 150px;
+  width: 150px;
+}
+
+.mat-card {
+  text-align: center;
+}

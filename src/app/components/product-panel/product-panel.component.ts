@@ -29,7 +29,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
     })
    }
   
-  displayedColumns: string[] = ['name', 'description', 'price', 'image', 'actions'];
+  displayedColumns: string[] = ['name', 'description', 'price', 'image', 'created_at', 'actions'];
 
   @ViewChild(MatTable)
   table: MatTable<any>;
@@ -57,7 +57,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
       disableClose: true,
       width: '270px',
       data: {
-        product: { user: '', name: '', price: '', description: '', image: '',},
+        product: { user: '', name: '', price: '', description: '', image: '', created_at: new Date()},
         creating: true
       }
     });
@@ -65,6 +65,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
       .afterClosed()
       .subscribe((result: ProductDialogResult) => {
         if (!result.cancel) {
+          result.product.created_at = new Date();
           this.shopService.addProductToDatabase(result.product)
           const msg = "Producto '" + result.product.name + "' creado";
           this.showAlert(msg);

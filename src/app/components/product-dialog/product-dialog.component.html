@@ -16,7 +16,7 @@
 
     <mat-form-field *ngIf="data.creating || data.editing">
         <mat-label>Descripción del producto</mat-label>
-        <input matInput placeholder="Descripción del producto..." [(ngModel)]="data.product.description" required>
+        <textarea matInput rows="5" placeholder="Descripción del producto..." [(ngModel)]="data.product.description" required></textarea>
     </mat-form-field>
 
     <mat-form-field *ngIf="data.creating || data.editing">

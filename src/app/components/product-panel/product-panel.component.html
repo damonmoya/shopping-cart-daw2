@@ -29,8 +29,13 @@
     </ng-container>
 
     <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Imagen </th>
+      <th mat-header-cell *matHeaderCellDef> Imagen </th>
       <td mat-cell *matCellDef="let product"> <img class="imgs" [src]=product.image alt="imagen"> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Creado en </th>
+      <td mat-cell *matCellDef="let todo"> {{todo.created_at.toMillis() | date:'dd/MM/yyyy h:mm a'}} </td>
     </ng-container>
   
     <ng-container matColumnDef="actions">

@@ -84,4 +84,10 @@ export class ShopService {
     return this.store.collection('purchases', ref => ref.where('user', '==', this.authService.currentUserId)).valueChanges();
   }
 
+  ////////////////////////////
+
+  getLatestProducts() {
+    return this.store.collection('products', ref => ref.orderBy('created_at', 'desc').limit(4)).valueChanges({ idField: 'id' });
+  }
+
 }

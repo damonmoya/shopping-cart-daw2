@@ -19,3 +19,8 @@ footer {
     background-color:yellow;
     margin-right: 10px;
 }
+
+mat-toolbar {
+    min-height: 50px;
+    max-height: 50px;
+}

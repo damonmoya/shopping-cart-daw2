@@ -67,6 +67,11 @@ table {
   width: 50px;
 }
 
+.mat-column-created_at {
+  flex: none;
+  width: 100px;
+}
+
 .mat-column-actions {
   flex: none;
   width: 50px;

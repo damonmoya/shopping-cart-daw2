@@ -3,6 +3,8 @@ import { Product } from './product';
 import { ShopService } from '../../services/shop/shop.service';
 import{ Observable, Subscription } from 'rxjs';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -16,16 +18,20 @@ export class ProductComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  constructor(private shopService: ShopService, private _snackBar: MatSnackBar) { }
+  constructor(private shopService: ShopService, public authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.subscription = this.shopService.getDatabaseProducts().subscribe(products => this.products = products)
   }
 
   addToCart(product: Product){
-    this.shopService.addProductToCart(product)
-    const msg = product.name + " se ha añadido al carrito"
-    this.showAlert(msg)
+    if (!this.authService.isUserEmailLoggedIn) {
+      this.router.navigate(['/login']);
+    } else {
+      this.shopService.addProductToCart(product)
+      const msg = product.name + " se ha añadido al carrito"
+      this.showAlert(msg)
+    }
   }
 
   showAlert(msg: string): void {

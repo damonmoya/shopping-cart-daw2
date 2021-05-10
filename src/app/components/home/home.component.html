@@ -4,5 +4,5 @@
     <button mat-raised-button color="primary" routerLink="/products" routerLinkActive="active">Ver todos nuestros productos</button>
 </p>
 <p>
-    <button mat-raised-button color="accent" routerLink="/cart" routerLinkActive="active">Ver el carrito de compra</button>
+    <button mat-raised-button color="accent" *ngIf="authService.isUserEmailLoggedIn" routerLink="/cart" routerLinkActive="active">Ver el carrito de compra</button>
 </p>

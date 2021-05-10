@@ -10,8 +10,8 @@
     </mat-form-field>
 
     <mat-form-field *ngIf="data.creating || data.editing">
-        <mat-label>Categoría del producto</mat-label>
-        <input matInput placeholder="Categoría del producto..." [(ngModel)]="data.product.category" required>
+        <mat-label>Precio del producto</mat-label>
+        <input matInput type="number" [(ngModel)]="data.product.price" required>
     </mat-form-field>
 
     <mat-form-field *ngIf="data.creating || data.editing">
@@ -30,7 +30,7 @@
 
 <div mat-dialog-actions align="center">
     <button
-      mat-button [disabled]="data.product.name === '' || data.product.category === '' || data.product.description === '' || data.product.image === ''" 
+      mat-button [disabled]="data.product.name === '' || data.product.price === null || data.product.description === '' || data.product.image === ''" 
       [mat-dialog-close]="{ product: data.product }"
       color="primary">OK
     </button>

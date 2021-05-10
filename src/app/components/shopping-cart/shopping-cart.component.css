@@ -4,12 +4,23 @@
 }
 
 .mat-card {
-    text-align: center;
-  }
-  
+  text-align: center;
+}
+
 h1 {
   margin: 20px;
   text-align: center;
   text-decoration: underline;
   font-weight: bolder;
+}
+
+.no-products {
+  margin-top: 10px;
+  font-size: 18pt;
+}
+
+h1, .no-products {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
 }

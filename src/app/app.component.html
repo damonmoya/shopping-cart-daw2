@@ -11,11 +11,11 @@
       </div>
       
       <div fxFlex fxLayoutAlign="flex-end center">
-        <button mat-button routerLink="/login" *ngIf="!authService.isUserEmailLoggedIn" routerLinkActive="active">Iniciar sesión</button>
+        <button mat-button class="login" routerLink="/login" *ngIf="!authService.isUserEmailLoggedIn" routerLinkActive="active">Iniciar sesión</button>
         <div *ngIf="authService.isUserEmailLoggedIn">
           <button mat-button routerLink="/cart" routerLinkActive="active">Carrito</button>
-          <button mat-button color="accent" routerLink="/products/panel" routerLinkActive="active">Panel de productos</button>
-          <button mat-button color="warn" (click)="authService.signOut()">Cerrar sesión</button>
+          <button mat-button class="panel" routerLink="/products/panel" routerLinkActive="active">Panel de productos</button>
+          <button mat-button class="logout" (click)="authService.signOut()">Cerrar sesión</button>
         </div>
       </div>
     </mat-toolbar>

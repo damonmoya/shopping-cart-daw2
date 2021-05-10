@@ -43,11 +43,10 @@ export class LoginComponent implements OnInit {
     if (this.validateForm(this.email, this.password)) {
       this.authService.signUpWithEmail(this.email, this.password)
         .then(() => {
-          this.router.navigate(['/user'])
+          this.router.navigate(['/'])
         }).catch(_error => {
           this.error = _error
           this.error.message = "El email ya está en uso"
-          //this.router.navigate(['/'])
         })
     }
   }
@@ -57,11 +56,10 @@ export class LoginComponent implements OnInit {
 
     if (this.validateForm(this.email, this.password)) {
       this.authService.loginWithEmail(this.email, this.password)
-        .then(() => this.router.navigate(['/user']))
+        .then(() => this.router.navigate(['/']))
         .catch(_error => {
           this.error = _error
           this.error.message = "Las credenciales introducidas no corresponden a ningún usuario"
-          //this.router.navigate(['/'])
         })
     }
   }

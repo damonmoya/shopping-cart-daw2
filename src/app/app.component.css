@@ -3,3 +3,15 @@ footer {
     color: white;
     text-align: center;
 }
+
+.login {
+    color: lime
+}
+
+.logout {
+    color: red
+}
+
+.panel {
+    color:yellow
+}

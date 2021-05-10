@@ -29,7 +29,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
     })
    }
   
-  displayedColumns: string[] = ['name', 'category', 'image', 'actions'];
+  displayedColumns: string[] = ['name', 'price', 'image', 'actions'];
 
   @ViewChild(MatTable)
   table: MatTable<any>;
@@ -57,7 +57,7 @@ export class ProductPanelComponent implements OnInit, AfterViewInit {
       disableClose: true,
       width: '270px',
       data: {
-        product: { name: '', category: '', description: '', image: '',},
+        product: { name: '', price: '', description: '', image: '',},
         creating: true
       }
     });
